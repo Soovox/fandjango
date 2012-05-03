@@ -60,6 +60,8 @@ class User(models.Model):
     last_seen_at = models.DateTimeField(_('last seen at'), auto_now_add=True)
     """A ``datetime`` object describing when the user was last seen."""
 
+    email = models.EmailField(null=True, blank=True)
+    
     @property
     def full_name(self):
         """Return the user's first name."""
@@ -124,14 +126,14 @@ class User(models.Model):
         """
         return self.graph.get('me').get('political', None)
 
-    @property
-    @cached(days=30)
-    def email(self):
-        """
-        A string describing the user's email.
-        """
-        return self.graph.get('me').get('email', None)
-
+    #@property
+    #@cached(days=30)
+    #def email(self):
+    #    """
+    #    A string describing the user's email.
+    #     """
+    #    return self.graph.get('me').get('email', None)
+    
     @property
     @cached(days=30)
     def website(self):
