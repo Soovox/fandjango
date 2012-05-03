@@ -210,6 +210,7 @@ class User(models.Model):
         self.first_name = profile.get('first_name')
         self.middle_name = profile.get('middle_name')
         self.last_name = profile.get('last_name')
+        self.email = profile.get('email')
         self.birthday = datetime.strptime(profile['birthday'], '%m/%d/%Y') if profile.has_key('birthday') else None
         self.save()
 
